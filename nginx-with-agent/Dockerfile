@@ -91,6 +91,11 @@ RUN sed -i 's,listen       80 default_server;,listen       8080 default_server;,
     && chmod -R g+w /var/cache/nginx \
     && chown -R 101:0 /etc/nginx \
     && chmod -R g+w /etc/nginx
+    && chown -R 101:0 /var/log/nginx \
+    && chmod -R g+rw /var/log/nginx \
+    && chown -R 101:0 /var/run/nginx-agent \
+    && chmod -R g+w /var/run/nginx-agent \
+    && ln -sf /dev/stdout /var/log/nginx-agent/agent.log
 
 EXPOSE 8080
 
